@@ -20,6 +20,7 @@ public class CheeseController {
     // Request path: /cheese
     @RequestMapping(value = "")
     public String index(Model model) {
+        model.addAttribute("cheeses", cheeses);
         model.addAttribute("title", "My Cheeses");
         return "cheese/index";
     }
