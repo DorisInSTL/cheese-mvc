@@ -38,5 +38,11 @@ public class CheeseController {
         return "redirect:";
     }
 
+    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    public String deleteCheese(@RequestParam String delete) {
+        cheeses.remove(delete);
+        // Redirect to /cheese
+        return "redirect:";
+    }
 
 }
