@@ -18,7 +18,8 @@ public class CheeseController {
 
     static HashMap<String, String> cheeses = new HashMap<>();
 
-    // Request path: /cheese
+    // Request path: GET /cheese
+    // Returns index of cheeses
     @RequestMapping(value = "")
     public String index(Model model) {
         model.addAttribute("cheeses", cheeses);
@@ -26,20 +27,26 @@ public class CheeseController {
         return "cheese/index";
     }
 
+    // Request path: GET /cheese/add
+    // Returns add cheese form
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddCheeseForm(Model model) {
         model.addAttribute("title", "Add Cheese");
         return "cheese/add";
     }
 
+    // Request path: POST /cheese/add
+    // Adds cheese
+    // Redirects to index
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddCheeseForm(@RequestParam String cheeseName, @RequestParam String description) {
         cheeses.put(cheeseName, description);
-        // Redirect to /cheese
         return "redirect:";
     }
 
-    // Request path: /cheese/delete
+    // Request path: POST /cheese/delete
+    // Deletes cheeses
+    // Redirects to index
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String delete(@RequestParam("delete") ArrayList<String> cheesesToDelete) {
         for (String cheeseToDelete : cheesesToDelete) {
