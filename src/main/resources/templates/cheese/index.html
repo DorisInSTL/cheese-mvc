@@ -6,6 +6,7 @@
 <nav th:replace="fragments :: title"></nav>
 <nav th:replace="fragments :: navigation"></nav>
 
+<!-- The extra <div> and classes are part of Skeleton CSS-->
 <div class="container">
     <div class="row">
         <table class="u-full-width">
@@ -26,15 +27,17 @@
     <div class="row">
         <form method="post" action="delete">
             <div class="three columns">
-                <label for="cheeseDeleteInput">Cheese To Delete</label>
+                <label>Cheese To Delete</label>
             </div>
             <div class="six columns">
-                <select class="u-full-width" id="cheeseDeleteInput" field="delete">
+                <!-- name specifies the variable that will be passed into the controller-->
+                <select class="u-full-width" name="delete">
+                    <!-- value specifies what the 'delete' variable will be set to -->
                     <option th:each="cheese : ${cheeses}" th:value="${cheese.key}" th:text="${cheese.key}"></option>
                 </select>
             </div>
             <div class="three columns">
-                <input class="button-danger" type="submit" value="Delete"></input>
+                <input class="button-danger" type="submit" value="delete"/>
             </div>
         </form>
 
