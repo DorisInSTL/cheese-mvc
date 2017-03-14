@@ -21,10 +21,10 @@
                 <tbody>
                 <tr th:each="cheese : ${cheeses}">
                     <td>
-                        <input type="checkbox" th:name="delete" th:value="${cheese.key}"/>
+                        <input type="checkbox" th:name="delete" th:value="${cheese.name}"/>
                     </td>
-                    <td th:text="${cheese.key}"></td>
-                    <td th:text="${cheese.value}"></td>
+                    <td th:text="${cheese.name}"></td>
+                    <td th:text="${cheese.description}"></td>
                 </tr>
                 </tbody>
             </table>
